@@ -1,0 +1,19 @@
+.sidebar {
+  background: linear-gradient(to bottom, #4e4e4e, #000);
+  color: #fff;
+  padding: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar h2,
+.sidebar h3 {
+  margin: 0 0 0.5rem 0;
+}
+
+.sidebar div {
+  margin-bottom: 1rem;
+}
+
+.sidebar p {
+  margin: 0;
+}
