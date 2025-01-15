@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { IconButton } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
-
+import { PlayArrow } from '@mui/icons-material';
+import { Pause } from '@mui/icons-material';
 function TimelineSlider({ onYearChange }) {
   const years = [2008, 2016, 2024, 2040];
   const [selectedYear, setSelectedYear] = useState(2008);
@@ -34,7 +35,7 @@ function TimelineSlider({ onYearChange }) {
   }, [isPlaying, onYearChange, years]);
 
   return (
-    <div className="absolute bottom-5 w-full flex items-center">
+    <div className="absolute bottom-5 mt-[-5%] w-full flex items-center">
       {/* Play/Pause Button */}
       <div className='ml-[5%] mr-[5%] mt-[-5%]'>
       <IconButton
@@ -43,7 +44,7 @@ function TimelineSlider({ onYearChange }) {
             color: '#92843B', // Dynamic color
           }}
       >
-        {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+        {isPlaying ? <Pause /> : <PlayArrow />}
       </IconButton>
       </div>
       {/* Slider */}

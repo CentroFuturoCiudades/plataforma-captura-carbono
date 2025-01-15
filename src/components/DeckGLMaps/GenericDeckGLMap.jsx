@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from "framer-motion";
 import DeckGL from 'deck.gl';
 import { Map } from 'react-map-gl';
 import { BitmapLayer } from '@deck.gl/layers';
@@ -6,9 +7,9 @@ import { Matrix4 } from 'math.gl';
 import { load } from '@loaders.gl/core';
 import { GeoTIFFLoader } from '@loaders.gl/geotiff';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
-import TimelineSlider from './TimelineSlider';
-import "./App.css"
-const mapboxAccessToken = "pk.eyJ1IjoiamVkbiIsImEiOiJjbTMwaWIzdnAwbjh3MnRwd2NncDY4YWxvIn0.V61M6zdOrvJDW864Ff_lqQ"
+import TimelineSlider from '../TimelineSlider/TimelineSlider';
+
+const mapboxAccessToken = "pk.eyJ1IjoiamVkbiIsImEiOiJjbTV4ZDc1ZmgwNzgwMmpvbG95N3RzbGkyIn0.lH6WIJPfH0dLpoW1WatrRw"
 
 const defaultViewState = {
   latitude: 1.8225, // Adjusted values for isometric display
@@ -19,6 +20,14 @@ const defaultViewState = {
 };
 
 function GenericDeckGLMap({ viewState = defaultViewState, tiffFiles, zTranslations }) {
+  const mapContainerClass = "map-container";
+    const sectionRef = useRef(null);
+  
+    // useInView returns true when the element is sufficiently in the viewport
+    const isInView = useInView(sectionRef, {
+      amount: 0.75, // how much of the element should be in view to trigger
+      once: false,  // whether it should only animate once
+    });
   const [layers, setLayers] = useState([]);
   const [tooltip, setTooltip] = useState(null);
 
@@ -85,7 +94,7 @@ function GenericDeckGLMap({ viewState = defaultViewState, tiffFiles, zTranslatio
   }, [tiffFiles, zTranslations]);
 
   return (
-    <div className="relative h-full w-full bg-[#F8F8F8] border border-gray-300 rounded-lg">
+    <div ref={sectionRef} className="relative h-full w-full bg-[#F8F8F8] border border-gray-300 rounded-lg">
       <DeckGL
         initialViewState={{
           latitude: 2.0225, // Adjusted values for isometric display
@@ -108,19 +117,39 @@ function GenericDeckGLMap({ viewState = defaultViewState, tiffFiles, zTranslatio
 
       {/* Overlayed Text */}
       <div className="absolute top-20 right-10">
-        <h1 className="text-7xl font-bold text-[#817740]">Cobertura de suelo</h1>
-        <p className="text-2xl text-[#817740] mt-2 bg-gray-100 bg-opacity-60 p-3 rounded-lg shadow-lg">
+        <motion.h1 
+        initial={{ opacity: 0, x: 50 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="text-7xl font-bold text-[#817740]">Cobertura de suelo</motion.h1>
+        <motion.p 
+        initial={{ opacity: 0, x: 50 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="text-2xl text-[#817740] mt-2 bg-gray-100 bg-opacity-60 p-3 rounded-lg shadow-lg">
           ¿Cuánto carbono se dejará de capturar si seguimos creciendo?
-        </p>
-        <p className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
+        </motion.p>
+        <motion.p 
+        initial={{ opacity: 0, x: 50 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
         Imágenes	en	isométrico con elevación topográfica.
-        </p>
-        <p className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
+        </motion.p>
+        <motion.p 
+        initial={{ opacity: 0, x: 50 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
         Crecimiento	área urbanizada
-        </p>
-        <p className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
+        </motion.p>
+        <motion.p 
+        initial={{ opacity: 0, x: 50 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
           Usos de suelo
-        </p>
+        </motion.p>
       </div>
 
       {/* Timeline */}

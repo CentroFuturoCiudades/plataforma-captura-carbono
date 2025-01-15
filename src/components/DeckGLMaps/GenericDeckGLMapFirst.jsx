@@ -7,7 +7,7 @@ import { load } from '@loaders.gl/core';
 import { GeoTIFFLoader } from '@loaders.gl/geotiff';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
 
-const mapboxAccessToken = "pk.eyJ1IjoiamVkbiIsImEiOiJjbTMwaWIzdnAwbjh3MnRwd2NncDY4YWxvIn0.V61M6zdOrvJDW864Ff_lqQ"
+const mapboxAccessToken = "pk.eyJ1IjoiamVkbiIsImEiOiJjbTV4ZDc1ZmgwNzgwMmpvbG95N3RzbGkyIn0.lH6WIJPfH0dLpoW1WatrRw"
 
 const defaultViewState = {
   latitude: 1.6176412478782285,
