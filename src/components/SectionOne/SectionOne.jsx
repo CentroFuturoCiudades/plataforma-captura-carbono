@@ -49,10 +49,11 @@ export default function SectionOne() {
     once: false,  // whether it should only animate once
   });
 
-  return (
+    return (
     <motion.div
       ref={sectionRef}
-      className="min-h-screen max-h-screen snap-start grid grid-cols-2 gap-6 bg-white"
+      className="w-full snap-start grid grid-cols-2 gap-6 bg-white"
+      style={{ aspectRatio: "16/9" }}
       // We can animate this entire container
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -109,7 +110,8 @@ export default function SectionOne() {
       {/* Right Column - Map and Charts */}
       <div className="flex flex-col justify-center items-center gap-4 px-10">
         <motion.div
-          className={`${mapContainerClass} w-full h-2/4 rounded-lg shadow-lg`}
+          className={`${mapContainerClass} w-full rounded-lg shadow-lg`}
+          style={{ aspectRatio: "16/9" }}
           initial={{ opacity: 0, x: 50 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
@@ -127,8 +129,12 @@ export default function SectionOne() {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1, delay: 1 }}
         >
-          <ReactECharts option={chartOptions1} className="w-1/2 h-[300px]" />
-          <ReactECharts option={chartOptions2} className="w-1/2 h-[300px]" />
+          <div className="w-1/2" style={{ aspectRatio: "16/9" }}>
+            <ReactECharts option={chartOptions1} className="w-full h-full" />
+          </div>
+          <div className="w-1/2" style={{ aspectRatio: "16/9" }}>
+            <ReactECharts option={chartOptions2} className="w-full h-full" />
+          </div>
         </motion.div>
       </div>
     </motion.div>

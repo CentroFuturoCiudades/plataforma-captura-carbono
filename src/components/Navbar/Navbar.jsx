@@ -8,14 +8,14 @@ export default function Navbar() {
         <img src="./bid.png" alt="Logo" className="h-10 ml-4" />
       </div>
       <ul className="flex space-x-6 mr-4">
-        <li>
+        {/* <li>
           <a
             href="#inicio"
             className="text-white text-lg font-bold hover:text-gray-300"
           >
             Inicio
           </a>
-        </li>
+        </li> */}
         <li>
           <a
             href="#ciudades"
@@ -42,7 +42,7 @@ export default function Navbar() {
         </li>
         <li>
           <a
-            href="#acerca"
+            href="#futuro"
             className="text-white text-lg font-bold hover:text-gray-300"
           >
             Acerca de
