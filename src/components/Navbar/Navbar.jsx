@@ -8,20 +8,20 @@ export default function Navbar() {
         <img src="./bid.png" alt="Logo" className="h-10 ml-4" />
       </div>
       <ul className="flex space-x-6 mr-4">
-        {/* <li>
-          <a
-            href="#inicio"
-            className="text-white text-lg font-bold hover:text-gray-300"
-          >
-            Inicio
-          </a>
-        </li> */}
         <li>
           <a
-            href="#ciudad"
+            href="#ciudades"
             className="text-white text-lg font-bold hover:text-gray-300"
           >
-            Ciudades
+            Selección de Ciudades
+          </a>
+        </li>
+        <li>
+          <a
+            href="#contexto"
+            className="text-white text-lg font-bold hover:text-gray-300"
+          >
+            Contexto
           </a>
         </li>
         <li>

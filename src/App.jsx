@@ -13,10 +13,10 @@ export default function App() {
     <div id ="myScrollContainer" className="h-screen overflow-x-hidden overflow-y-scroll snap-y snap-mandatory no-scrollbar">
       <Navbar />
       <main className="snap-container">
-        <section id="inicio" className="snap-start">
+        <section id="ciudades" className="snap-start">
           <SectionBeginning />
         </section>
-        <section id="ciudad" className="snap-start">
+        <section id="contexto" className="snap-start">
           <SectionOne />
         </section>
         <section id="escenarios" className="snap-start">
