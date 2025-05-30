@@ -18,7 +18,7 @@ export default function Navbar() {
         </li> */}
         <li>
           <a
-            href="#ciudades"
+            href="#ciudad"
             className="text-white text-lg font-bold hover:text-gray-300"
           >
             Ciudades
