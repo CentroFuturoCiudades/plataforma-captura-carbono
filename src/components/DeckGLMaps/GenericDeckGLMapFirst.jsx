@@ -6,8 +6,7 @@ import { Matrix4 } from 'math.gl';
 import { load } from '@loaders.gl/core';
 import { GeoTIFFLoader } from '@loaders.gl/geotiff';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
-
-const mapboxAccessToken = "pk.eyJ1IjoiamVkbiIsImEiOiJjbTV4ZDc1ZmgwNzgwMmpvbG95N3RzbGkyIn0.lH6WIJPfH0dLpoW1WatrRw"
+import { env } from 'echarts';
 
 const defaultViewState = {
   latitude: 1.6176412478782285,
@@ -101,12 +100,12 @@ function GenericDeckGLMapFirst({ viewState = defaultViewState, tiffFiles, zTrans
   pitch: 0,
   bearing: 0,
 }} controller={
-          true
+          false
         } layers={layers}
         onHover={handleHover}
         >
       <Map
-        mapboxAccessToken={mapboxAccessToken}
+        mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         mapStyle="mapbox://styles/mapbox/streets-v12"
         className="w-full"
         attributionControl={false}

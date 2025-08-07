@@ -3,6 +3,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import DeckGL from 'deck.gl';
 import { Map } from 'react-map-gl';
 import { IconLayer } from '@deck.gl/layers';
+import { env } from 'echarts';
 
 // Center the default view somewhere near Florencia, Caquetá.
 const defaultViewState = {
@@ -25,7 +26,7 @@ export default function CHoosingRegionMap() {
         coordinates: f.geometry.coordinates,
         ...f.properties
       }));
-    console.log("Points:", points);
+  
     return points
   }
 
@@ -34,9 +35,9 @@ export default function CHoosingRegionMap() {
       .then(response => response.json())
       .then(data => {
         const iconData = geojsonToIconData(data);
-        console.log("Points:", iconData);
+        
         setGeojsonData(iconData);
-        console.log("GeoJSON loaded:", iconData);
+        
         // or do any additional logic here
       })
       .catch(err => console.error("Failed to load GeoJSON:", err));
@@ -44,7 +45,7 @@ export default function CHoosingRegionMap() {
 
   useEffect(() => {
     if (geojsonData) {
-      console.log("GeoJSON loaded:", geojsonData);
+     
     }
   }, [geojsonData]);
 
@@ -61,7 +62,7 @@ export default function CHoosingRegionMap() {
 
   // Called if user clicks on a GeoJSON point
   const handleCityClick = useCallback((feature) => {
-    console.log("Clicked city:");
+   
     scrollDownOneScreen();
   }, [scrollDownOneScreen]);
 
@@ -130,7 +131,7 @@ export default function CHoosingRegionMap() {
         onHover={handleHover}
       >
         <Map
-          mapboxAccessToken={"pk.eyJ1IjoiamVkbiIsImEiOiJjbTV4ZDc1ZmgwNzgwMmpvbG95N3RzbGkyIn0.lH6WIJPfH0dLpoW1WatrRw"}
+          mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle="mapbox://styles/mapbox/streets-v12"
           attributionControl={false}
         />

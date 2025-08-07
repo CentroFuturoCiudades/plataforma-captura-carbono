@@ -5,8 +5,8 @@ import PauseIcon from '@mui/icons-material/Pause';
 import { PlayArrow } from '@mui/icons-material';
 import { Pause } from '@mui/icons-material';
 function TimelineSlider({ onYearChange }) {
-  const years = [2008, 2016, 2024, 2040];
-  const [selectedYear, setSelectedYear] = useState(2008);
+  const years = [2000, 2010, 2020];
+  const [selectedYear, setSelectedYear] = useState(2000);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleYearChange = (year) => {

@@ -4,9 +4,14 @@ import { motion, useInView } from "framer-motion";
 import ReactECharts from "echarts-for-react";
 import GenericDeckGLMapFirst from "../DeckGLMaps/GenericDeckGLMapFirst";
 import { viewState, tiffFiles, zTranslations } from "../../config/rasterConfig";
+import DeckGL from 'deck.gl';
+import { Map } from 'react-map-gl';
 import "./SectionOne.css";
+import { GeoJsonLayer } from '@deck.gl/layers';
+import { env } from "echarts";
 
-export default function SectionOne() {
+
+export default function Contexto() {
   const mapContainerClass = "map-container";
   const chartOptions1 = {
     title: {
@@ -49,94 +54,123 @@ export default function SectionOne() {
     once: false,  // whether it should only animate once
   });
 
+    // GeoJsonLayer for DeckGL
+
+    // Example GeoJSON data (replace with your own)
+    
+
+    const geoJsonLayer = new GeoJsonLayer({
+      id: 'geojson-layer',
+      data: "/data/geojson/pucallpa.geojson", // Path to your GeoJSON file
+      filled: true,
+      getFillColor: [34, 139, 34, 77],
+      getLineColor: [34, 139, 34, 255],
+      lineWidthMinPixels: 1,
+      stroked: true,
+      pickable: false,
+    });
+
     return (
-    <motion.div
-      ref={sectionRef}
-      className="w-full snap-start grid grid-cols-2 gap-6 bg-white"
-      style={{ aspectRatio: "16/9" }}
-      // We can animate this entire container
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1 }}
-    >
-      {/* Left Column - Text Content */}
-      <div className="flex flex-col justify-center px-10">
-        <motion.h1
-          className="text-6xl font-bold text-[#324130]"
-          // Each sub-element can have its own animation
-          initial={{ opacity: 0, x: -50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          Florencia
-        </motion.h1>
+      <motion.div
+        ref={sectionRef}
+        className="w-full snap-start grid grid-cols-2 gap-6 bg-white"
+        style={{ aspectRatio: "16/9" }}
+        // We can animate this entire container
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 1 }}
+      >
+        {/* Left Column - Text Content */}
+        <div className="flex flex-col justify-center px-10">
+          <motion.h1
+            className="text-6xl font-bold text-[#324130]"
+            // Each sub-element can have its own animation
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.2 }}
+          >
+            Pucallpa 
+          </motion.h1>
 
-        <motion.h2
-          className="text-4xl text-[#92843B] mt-2"
-          initial={{ opacity: 0, x: -50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, delay: 0.4 }}
-        >
-          Caquetá
-        </motion.h2>
+          <motion.h2
+            className="text-4xl text-[#92843B] mt-2"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.4 }}
+          >
+            Coronel Portillo
+          </motion.h2>
 
-        <motion.p
-          className="text-justify text-lg leading-relaxed"
-          initial={{ opacity: 0, x: -50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet
-    sapien pulvinar, aliquet magna eu, egestas risus. Praesent a libero ac enim
-    sollicitudin consectetur id eget risus. Aliquam porta eu eros non dignissim.
-    Nam laoreet pulvinar est accumsan posuere. Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit. Fusce sed eros gravida, lacinia orci eu, cursus
-    dui. Aenean efficitur quis ante ullamcorper gravida. Donec faucibus felis
-    orci, ut consectetur leo condimentum quis. Ut ac odio cursus, condimentum
-    nulla id, porttitor diam. Cras congue euismod maximus. In ac ligula fermentum
-    leo tristique ultrices. Sed auctor fringilla suscipit. Integer rutrum risus a
-    quam varius, nec feugiat turpis sollicitudin. Etiam enim sapien, varius et
-    tempor eget, lobortis ut dolor. Sed tincidunt nisi odio, ut tempor neque
-    feugiat vel. Pellentesque habitant morbi tristique senectus et netus et
-    malesuada fames ac turpis egestas. Duis luctus consequat condimentum. Sed in
-    accumsan lacus. Ut et ipsum vitae velit maximus ultrices. Etiam sed molestie
-    sem. Vestibulum malesuada convallis libero eget ultricies. Sed in lorem
-    aliquet, sollicitudin neque feugiat, tristique nisi. Mauris blandit lorem
-    tincidunt finibus blandit. Etiam sagittis congue nunc, ut congue mi elementum
-    eu. Proin consequat urna sem, sit amet lacinia neque ullamcorper et.
-        </motion.p>
-      </div>
+          <motion.p
+            className="text-justify text-lg leading-relaxed"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.6 }}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet
+      sapien pulvinar, aliquet magna eu, egestas risus. Praesent a libero ac enim
+      sollicitudin consectetur id eget risus. Aliquam porta eu eros non dignissim.
+      Nam laoreet pulvinar est accumsan posuere. Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit. Fusce sed eros gravida, lacinia orci eu, cursus
+      dui. Aenean efficitur quis ante ullamcorper gravida. Donec faucibus felis
+      orci, ut consectetur leo condimentum quis. Ut ac odio cursus, condimentum
+      nulla id, porttitor diam. Cras congue euismod maximus. In ac ligula fermentum
+      leo tristique ultrices. Sed auctor fringilla suscipit. Integer rutrum risus a
+      quam varius, nec feugiat turpis sollicitudin. Etiam enim sapien, varius et
+      tempor eget, lobortis ut dolor. Sed tincidunt nisi odio, ut tempor neque
+      feugiat vel. Pellentesque habitant morbi tristique senectus et netus et
+      malesuada fames ac turpis egestas. Duis luctus consequat condimentum. Sed in
+      accumsan lacus. Ut et ipsum vitae velit maximus ultrices. Etiam sed molestie
+      sem. Vestibulum malesuada convallis libero eget ultricies. Sed in lorem
+      aliquet, sollicitudin neque feugiat, tristique nisi. Mauris blandit lorem
+      tincidunt finibus blandit. Etiam sagittis congue nunc, ut congue mi elementum
+      eu. Proin consequat urna sem, sit amet lacinia neque ullamcorper et.
+          </motion.p>
+        </div>
 
-      {/* Right Column - Map and Charts */}
-      <div className="flex flex-col justify-center items-center gap-4 px-10">
-        <motion.div
-          className={`${mapContainerClass} w-full rounded-lg shadow-lg`}
-          style={{ aspectRatio: "16/9" }}
-          initial={{ opacity: 0, x: 50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, delay: 0.8 }}
-        >
-          <GenericDeckGLMapFirst
-            viewState={viewState}
-            tiffFiles={tiffFiles}
-            zTranslations={zTranslations}
-          />
-        </motion.div>
+        {/* Right Column - Map and Charts */}
+        <div className="flex flex-col justify-center items-center gap-4 px-10">
+          <motion.div
+            className={`${mapContainerClass} relative w-full rounded-lg shadow-lg`}
+            style={{ aspectRatio: "16/9" }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 0.8 }}
+          >
+              <DeckGL
+                initialViewState={{
+                  latitude: -8.3779,
+                  longitude: -74.5743,
+                  zoom: 10,
+                  pitch: 0,
+                  bearing: 0,
+                }}
+                controller={false}
+                layers={[geoJsonLayer]}
+              >
+                <Map
+                  mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
+                  mapStyle="mapbox://styles/mapbox/streets-v12"
+                  className="w-full"
+                  attributionControl={false}
+                />
+              </DeckGL>
+          </motion.div>
 
-        <motion.div
-          className="flex justify-between w-full gap-4"
-          initial={{ opacity: 0, x: 50 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, delay: 1 }}
-        >
-          <div className="w-1/2" style={{ aspectRatio: "16/9" }}>
-            <ReactECharts option={chartOptions1} className="w-full h-full" />
-          </div>
-          <div className="w-1/2" style={{ aspectRatio: "16/9" }}>
-            <ReactECharts option={chartOptions2} className="w-full h-full" />
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
+          <motion.div
+            className="flex justify-between w-full gap-4"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 1, delay: 1 }}
+          >
+            <div className="w-1/2" style={{ aspectRatio: "16/9" }}>
+              <ReactECharts option={chartOptions1} className="w-full h-full" />
+            </div>
+            <div className="w-1/2" style={{ aspectRatio: "16/9" }}>
+              <ReactECharts option={chartOptions2} className="w-full h-full" />
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+    );
 }

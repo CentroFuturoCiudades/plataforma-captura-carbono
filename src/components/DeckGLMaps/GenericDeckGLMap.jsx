@@ -9,7 +9,6 @@ import { GeoTIFFLoader } from '@loaders.gl/geotiff';
 import { COORDINATE_SYSTEM } from '@deck.gl/core';
 import TimelineSlider from '../TimelineSlider/TimelineSlider';
 
-const mapboxAccessToken = "pk.eyJ1IjoiamVkbiIsImEiOiJjbTV4ZDc1ZmgwNzgwMmpvbG95N3RzbGkyIn0.lH6WIJPfH0dLpoW1WatrRw"
 
 const defaultViewState = {
   latitude: 1.8225, // Adjusted values for isometric display
@@ -108,7 +107,7 @@ function GenericDeckGLMap({ viewState = defaultViewState, tiffFiles, zTranslatio
         style={{ borderRadius: '8px' }}
       >
         <Map
-          mapboxAccessToken={mapboxAccessToken}
+          mapboxAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
           mapStyle="mapbox://styles/mapbox/light-v10" // Lighter style to match the design
           className="w-full h-full"
           attributionControl={false}
@@ -129,13 +128,13 @@ function GenericDeckGLMap({ viewState = defaultViewState, tiffFiles, zTranslatio
         className="text-2xl text-[#817740] mt-2 bg-gray-100 bg-opacity-60 p-3 rounded-lg shadow-lg">
           ¿Cuánto carbono se dejará de capturar si seguimos creciendo?
         </motion.p>
-        <motion.p 
+        {/* <motion.p 
         initial={{ opacity: 0, x: 50 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 1, delay: 0.8 }}
         className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
         Imágenes	en	isométrico con elevación topográfica.
-        </motion.p>
+        </motion.p> */}
         <motion.p 
         initial={{ opacity: 0, x: 50 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -147,7 +146,7 @@ function GenericDeckGLMap({ viewState = defaultViewState, tiffFiles, zTranslatio
         initial={{ opacity: 0, x: 50 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ duration: 1, delay: 0.8 }}
-        className="text-2xl text-[#817740] mt-[80px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
+        className="text-2xl text-[#817740] mt-[200px] ml-[60%] w-[250px] bg-gray-100 bg-opacity-80 p-3 rounded-lg shadow-lg">
           Usos de suelo
         </motion.p>
       </div>

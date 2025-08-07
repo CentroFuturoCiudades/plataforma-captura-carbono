@@ -8,14 +8,7 @@ export default function Navbar() {
         <img src="./bid.png" alt="Logo" className="h-10 ml-4" />
       </div>
       <ul className="flex space-x-6 mr-4">
-        <li>
-          <a
-            href="#ciudades"
-            className="text-white text-lg font-bold hover:text-gray-300"
-          >
-            Selección de Ciudades
-          </a>
-        </li>
+        
         <li>
           <a
             href="#contexto"
@@ -26,18 +19,18 @@ export default function Navbar() {
         </li>
         <li>
           <a
-            href="#escenarios"
+            href="#uso-suelo"
             className="text-white text-lg font-bold hover:text-gray-300"
           >
-            Escenarios
+            Uso de Suelo
           </a>
         </li>
         <li>
           <a
-            href="#cobertura"
+            href="#carbon-emmissions"
             className="text-white text-lg font-bold hover:text-gray-300"
           >
-            Cobertura
+            Emisiones de Carbono
           </a>
         </li>
         <li>
@@ -45,7 +38,7 @@ export default function Navbar() {
             href="#futuro"
             className="text-white text-lg font-bold hover:text-gray-300"
           >
-            Acerca de
+            Políticas y Futuro
           </a>
         </li>
       </ul>

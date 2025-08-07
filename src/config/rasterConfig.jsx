@@ -9,8 +9,8 @@ export const viewState = {
 };
 
 // Data for TIFF files and transformations
-export const tiffFilesOne = ['/data/rasters/esri_raster_florencia.tif', '/data/rasters/GLC_FCS30D_raster_florencia.tif', '/data/rasters/world_cover_raster_florencia.tif'];
-export const zTranslationsOne = [new Matrix4().translate([0, 0, 40000]), new Matrix4().translate([0, 0, 24000]), new Matrix4().translate([0, 0, 8000])];
+export const tiffFilesOne = [/* '/data/rasters/esri_raster_florencia.tif', */ '/data/rasters/GLC_FCS30D_raster_florencia.tif', '/data/rasters/world_cover_raster_florencia.tif'];
+export const zTranslationsOne = [/* new Matrix4().translate([0, 0, 40000]), */ new Matrix4().translate([0, 0, 30000]), new Matrix4().translate([0, 0, 8000])];
 
 export const tiffFiles = ['/data/rasters/GLC_FCS30D_raster_florencia.tif'];
 export const zTranslations = [ new Matrix4().translate([0, 0, 0])];
